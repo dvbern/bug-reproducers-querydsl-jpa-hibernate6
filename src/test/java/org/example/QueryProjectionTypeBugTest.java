@@ -98,6 +98,22 @@ public class QueryProjectionTypeBugTest {
 	}
 
 	@Test
+	void queries_with_NumberExpression_fails() {
+		var rows = new JPAQuery<>(em)
+				.select(myEntity.myCustomNumber.sum())
+				.from(myEntity)
+				.fetch();
+
+		// instead throws:
+		// java.lang.IllegalArgumentException: Unsupported target type : MyCustomNumber
+
+		assertThat(rows)
+				.containsExactlyInAnyOrder(
+						new MyCustomNumber("1332")
+				);
+	}
+
+	@Test
 	void projection_queries_with_sum_fail() {
 		var rows = new JPAQuery<>(em)
 				.select(new QMyProjection(myEntity.type, myEntity.myCustomNumber.sum()))
