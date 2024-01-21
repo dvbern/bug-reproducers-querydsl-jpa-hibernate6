@@ -1,3 +1,6 @@
+# put your temp files here
+/developer-local-settings/
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

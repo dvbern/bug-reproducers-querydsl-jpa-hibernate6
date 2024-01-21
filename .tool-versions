@@ -1,3 +1,4 @@
 # used by asdf-vm
-java temurin-17.0.7+7
+java temurin-17.0.9+9
 maven 3.9.3
+mvnd 1.0-m8-m39
